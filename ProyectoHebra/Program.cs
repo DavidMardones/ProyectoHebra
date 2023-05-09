@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoHebra.Hebra_Clase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,8 +30,11 @@ namespace ProyectoHebra
             for (int i = 1; i < 7; i++)
             {
                 //Thread t = new Thread(new ThreadStart(ejecutar));
-                Thread t = new Thread(new ParameterizedThreadStart(ejecutarConParametro));
-                t.Name = i.ToString();
+                //Thread t = new Thread(new ParameterizedThreadStart(ejecutarConParametro));
+                //t.Name = i.ToString();
+                //t.Start(i);
+                Hebra he = new Hebra(i);
+                Thread t = new Thread(new ThreadStart(he.ejecutar));
                 t.Start();
             }
             Console.WriteLine("Hebra iniciada: ");
